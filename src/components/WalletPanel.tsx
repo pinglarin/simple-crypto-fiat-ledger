@@ -6,10 +6,9 @@ import { useState, useEffect } from "react";
 import { WalletData, EthTransaction } from "@/lib/types";
 import { fmtCurrency, shortAddr, USD_TO_THB } from "@/lib/utils";
 
-const WALLET_ADDRESS = process.env.NEXT_PUBLIC_WALLET_ADDRESS || ""; // Set your wallet address in .env.local
-
 interface Props {
   currency: "USD" | "THB";
+  walletAddress: string;
 }
 
 function TxRow({ tx, currency }: { tx: EthTransaction; currency: "USD" | "THB" }) {
@@ -60,14 +59,21 @@ function TxRow({ tx, currency }: { tx: EthTransaction; currency: "USD" | "THB" }
   );
 }
 
-export default function WalletPanel({ currency }: Props) {
+export default function WalletPanel({ currency, walletAddress }: Props) {
   const [wallet, setWallet] = useState<WalletData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [tab, setTab] = useState<"txs" | "tokens">("txs");
 
   useEffect(() => {
-    fetch(`/api/wallet?address=${WALLET_ADDRESS}`)
+    if (!walletAddress) {
+      setLoading(false);
+      return;
+    }
+    setLoading(true);
+    setError(null);
+    setWallet(null);
+    fetch(`/api/wallet?address=${walletAddress}`)
       .then((r) => r.json())
       .then((data) => {
         if (data.error) throw new Error(data.error);
@@ -75,14 +81,14 @@ export default function WalletPanel({ currency }: Props) {
       })
       .catch(() => setError("Could not fetch on-chain data from Etherscan."))
       .finally(() => setLoading(false));
-  }, []);
+  }, [walletAddress]);
 
   return (
     <div className="card p-6 animate-slide-up" style={{ animationDelay: "300ms", opacity: 0 }}>
       <div className="flex items-center justify-between mb-4">
         <div>
           <h2 className="font-display text-sm font-bold text-[#e8e8f0] tracking-wide uppercase">On-Chain Wallet</h2>
-          <p className="text-[#cbd1e0] font-mono text-[10px] mt-0.5 break-all">{WALLET_ADDRESS}</p>
+          <p className="text-[#cbd1e0] font-mono text-[10px] mt-0.5 break-all">{walletAddress || "No address set"}</p>
         </div>
         <div className="flex-shrink-0 ml-3">
           {loading ? (
@@ -105,6 +111,10 @@ export default function WalletPanel({ currency }: Props) {
         <div className="flex flex-col gap-2 animate-pulse">
           {[...Array(5)].map((_, i) => <div key={i} className="h-12 bg-[#1e1e2e] rounded-lg" />)}
         </div>
+      )}
+
+      {!loading && !walletAddress && (
+        <p className="text-[#8888aa] font-mono text-xs text-center py-6">No wallet address configured. Click the address in the header to set one.</p>
       )}
 
       {wallet && !loading && (
