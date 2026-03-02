@@ -70,12 +70,12 @@ export default function ShortcutPanel() {
             <h2 className="font-display text-sm font-bold text-[#e8e8f0] tracking-wide uppercase">
               Apple Shortcut Setup
             </h2>
-            <p className="text-[#4a4a6a] font-mono text-xs mt-0.5">
+            <p className="text-[#cbd1e0] font-mono text-xs mt-0.5">
               Log trades from iPhone after each Binance fill
             </p>
           </div>
         </div>
-        <span className="text-[#4a4a6a] font-mono text-xs">{open ? "▲" : "▼"}</span>
+        <span className="text-[#cbd1e0] font-mono text-xs">{open ? "▲" : "▼"}</span>
       </button>
 
       {open && (
@@ -85,7 +85,7 @@ export default function ShortcutPanel() {
             {(["setup", "test"] as const).map((t) => (
               <button key={t} onClick={() => setTab(t)}
                 className={`flex-1 py-1.5 text-xs font-mono rounded transition-all capitalize ${
-                  tab === t ? "bg-[#1e1e2e] text-[#e8e8f0]" : "text-[#4a4a6a] hover:text-[#8888aa]"
+                  tab === t ? "bg-[#1e1e2e] text-[#e8e8f0]" : "text-[#cbd1e0] hover:text-[#8888aa]"
                 }`}>
                 {t === "setup" ? "Setup Guide" : "Test Endpoint"}
               </button>
@@ -96,12 +96,12 @@ export default function ShortcutPanel() {
             <div className="space-y-5">
               {/* Endpoint */}
               <div>
-                <p className="text-[#4a4a6a] font-mono text-[10px] uppercase tracking-wider mb-2">API Endpoint</p>
+                <p className="text-[#cbd1e0] font-mono text-[10px] uppercase tracking-wider mb-2">API Endpoint</p>
                 <div className="bg-[#0a0a0f] border border-[#1e1e2e] rounded-lg px-3 py-2 flex items-center justify-between gap-2">
                   <code className="text-[#f7931a] font-mono text-xs break-all">{endpoint}</code>
                   <button
                     onClick={() => navigator.clipboard.writeText(endpoint)}
-                    className="text-[#4a4a6a] hover:text-[#e8e8f0] text-xs font-mono flex-shrink-0 transition-colors"
+                    className="text-[#cbd1e0] hover:text-[#e8e8f0] text-xs font-mono flex-shrink-0 transition-colors"
                   >
                     copy
                   </button>
@@ -110,7 +110,7 @@ export default function ShortcutPanel() {
 
               {/* Steps */}
               <div className="space-y-4">
-                <p className="text-[#4a4a6a] font-mono text-[10px] uppercase tracking-wider">Shortcut Steps</p>
+                <p className="text-[#cbd1e0] font-mono text-[10px] uppercase tracking-wider">Shortcut Steps</p>
 
                 {[
                   {
@@ -160,7 +160,7 @@ export default function ShortcutPanel() {
 
               {/* Payload reference */}
               <div>
-                <p className="text-[#4a4a6a] font-mono text-[10px] uppercase tracking-wider mb-2">Full JSON Payload Reference</p>
+                <p className="text-[#cbd1e0] font-mono text-[10px] uppercase tracking-wider mb-2">Full JSON Payload Reference</p>
                 <pre className="bg-[#0a0a0f] border border-[#1e1e2e] rounded-lg p-3 text-[10px] font-mono text-[#8888aa] overflow-x-auto">
                   {examplePayload}
                 </pre>
@@ -179,7 +179,7 @@ export default function ShortcutPanel() {
 
           {tab === "test" && (
             <div className="space-y-4">
-              <p className="text-[#4a4a6a] font-mono text-xs">
+              <p className="text-[#cbd1e0] font-mono text-xs">
                 Sends a sample BUY 0.0014 BTC @ $71,200 trade to the endpoint to verify it is working.
               </p>
               <pre className="bg-[#0a0a0f] border border-[#1e1e2e] rounded-lg p-3 text-[10px] font-mono text-[#8888aa] overflow-x-auto">

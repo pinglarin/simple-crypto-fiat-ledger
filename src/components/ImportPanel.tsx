@@ -48,7 +48,7 @@ export default function ImportPanel({ onImport }: Props) {
       <h2 className="font-display text-sm font-bold text-[#e8e8f0] tracking-wide uppercase mb-1">
         Import CSV
       </h2>
-      <p className="text-[#4a4a6a] font-mono text-xs mb-4">
+      <p className="text-[#cbd1e0] font-mono text-xs mb-4">
         Drop a Binance order history export to merge into ledger
       </p>
 
@@ -57,7 +57,7 @@ export default function ImportPanel({ onImport }: Props) {
         onClick={() => inputRef.current?.click()}
       >
         <p className="text-2xl mb-2">📄</p>
-        <p className="text-[#4a4a6a] font-mono text-xs">
+        <p className="text-[#cbd1e0] font-mono text-xs">
           {loading ? "Processing…" : "Click or drag CSV here"}
         </p>
         <input

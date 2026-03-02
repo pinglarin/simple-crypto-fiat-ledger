@@ -4,11 +4,20 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --color-bg: #0a0a0f;
+  --color-surface: #111118;
+  --color-border: #1e1e2e;
+  --color-text: #e8e8f0;
+  --color-text-dim: #cbd1e0; /* lighter, more readable gray */
+  --color-muted: #9aa0b8;
+}
+
 * { box-sizing: border-box; }
 
 body {
-  background: #0a0a0f;
-  color: #e8e8f0;
+  background: var(--color-bg);
+  color: var(--color-text);
   font-family: 'DM Sans', sans-serif;
   min-height: 100vh;
 }
@@ -62,13 +71,13 @@ body {
 
 .btn-ghost {
   background: transparent;
-  color: #8888aa;
+  color: var(--color-text-dim);
   font-family: 'Space Mono', monospace;
   font-size: 0.7rem;
   font-weight: 400;
   padding: 6px 12px;
   border-radius: 6px;
-  border: 1px solid #1e1e2e;
+  border: 1px solid var(--color-border);
   cursor: pointer;
   transition: all 0.15s;
   text-transform: uppercase;

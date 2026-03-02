@@ -28,7 +28,7 @@ export default function StatCard({ label, value, sub, accent, positive, negative
     >
       <p className="text-[#8888aa] text-xs uppercase tracking-widest font-mono mb-2">{label}</p>
       <p className={`font-display text-2xl font-bold ${valueColor} leading-tight`}>{value}</p>
-      {sub && <p className="text-[#4a4a6a] text-xs font-mono mt-1">{sub}</p>}
+      {sub && <p className="text-[#cbd1e0] text-xs font-mono mt-1">{sub}</p>}
     </div>
   );
 }

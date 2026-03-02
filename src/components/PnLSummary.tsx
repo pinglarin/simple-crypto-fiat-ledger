@@ -49,13 +49,13 @@ function PnLCard({
       className={`card p-5 border ${glow} animate-slide-up`}
       style={{ animationDelay: `${delay}ms`, opacity: 0 }}
     >
-      <p className="text-[#4a4a6a] font-mono text-[10px] uppercase tracking-widest mb-3">{label}</p>
+      <p className="text-[#cbd1e0] font-mono text-[10px] uppercase tracking-widest mb-3">{label}</p>
       {loading ? (
         <div className="h-7 w-24 bg-[#1e1e2e] rounded animate-pulse mb-1" />
       ) : (
         <p className={`font-display text-2xl font-bold ${color} leading-none mb-1`}>{value}</p>
       )}
-      {sub && <p className="text-[#4a4a6a] font-mono text-[10px] mt-1.5">{sub}</p>}
+      {sub && <p className="text-[#cbd1e0] font-mono text-[10px] mt-1.5">{sub}</p>}
     </div>
   );
 }
@@ -166,11 +166,11 @@ export default function PnLSummary({ realizedPnL, openPositions, totalCostBasis,
             </h3>
             <div className="flex items-center gap-3">
               {lastUpdated && (
-                <span className="text-[#4a4a6a] font-mono text-[10px]">prices @ {lastUpdated}</span>
+                <span className="text-[#cbd1e0] font-mono text-[10px]">prices @ {lastUpdated}</span>
               )}
               <button
                 onClick={fetchPrices}
-                className="text-[10px] font-mono text-[#4a4a6a] hover:text-[#f7931a] transition-colors"
+                className="text-[10px] font-mono text-[#cbd1e0] hover:text-[#f7931a] transition-colors"
               >
                 ↻ refresh
               </button>
@@ -181,7 +181,7 @@ export default function PnLSummary({ realizedPnL, openPositions, totalCostBasis,
               <thead>
                 <tr className="border-b border-[#1e1e2e]">
                   {["Asset", "Qty Held", "Avg Cost", "Current Price", "Value", "Unrealized P&L", ""].map((h, i) => (
-                    <th key={i} className="px-5 py-2.5 text-left font-mono text-[#4a4a6a] uppercase tracking-widest text-[10px] font-normal">
+                    <th key={i} className="px-5 py-2.5 text-left font-mono text-[#cbd1e0] uppercase tracking-widest text-[10px] font-normal">
                       {h}
                     </th>
                   ))}
@@ -207,7 +207,7 @@ export default function PnLSummary({ realizedPnL, openPositions, totalCostBasis,
                           {sym}{(pos.currentPrice * mul).toLocaleString(undefined, { maximumFractionDigits: pos.currentPrice < 1 ? 6 : 2 })}
                         </span>
                       ) : (
-                        <span className="text-[#4a4a6a]">no price</span>
+                        <span className="text-[#cbd1e0]">no price</span>
                       )}
                     </td>
                     <td className="px-5 py-3 font-mono text-[#8888aa]">
@@ -222,7 +222,7 @@ export default function PnLSummary({ realizedPnL, openPositions, totalCostBasis,
                           {sym}{(Math.abs(pos.unrealized) * mul).toLocaleString(undefined, { maximumFractionDigits: 0 })}
                         </span>
                       ) : (
-                        <span className="text-[#4a4a6a] font-mono">—</span>
+                        <span className="text-[#cbd1e0] font-mono">—</span>
                       )}
                     </td>
                     <td className="px-5 py-3">

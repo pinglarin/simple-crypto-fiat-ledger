@@ -64,13 +64,13 @@ export default function VolumeChart({ realizedData, unrealizedData, currency }: 
           <h2 className="font-display text-sm font-bold text-[#e8e8f0] tracking-wide uppercase">
             {mode === 'realized' ? 'Realized P&L' : 'Unrealized P&L'}
           </h2>
-          <p className="text-[#4a4a6a] font-mono text-xs mt-0.5">
+          <p className="text-[#cbd1e0] font-mono text-xs mt-0.5">
             FIFO cost basis · {data[0]?.date ?? "—"} → today
           </p>
         </div>
         <div className="flex items-center gap-4">
           <div className="text-right">
-            <p className="text-[#4a4a6a] font-mono text-[10px] uppercase tracking-wider">Total</p>
+            <p className="text-[#cbd1e0] font-mono text-[10px] uppercase tracking-wider">Total</p>
             <p className={`font-display text-lg font-bold ${totalPnL >= 0 ? "text-[#00d4aa]" : "text-red-400"}`}>
               {totalPnL >= 0 ? "+" : ""}{sym}{Math.abs(totalPnL).toLocaleString()}
             </p>
@@ -85,7 +85,7 @@ export default function VolumeChart({ realizedData, unrealizedData, currency }: 
         </div>
       </div>
 
-      <div className="flex items-center gap-4 text-[10px] font-mono text-[#4a4a6a] mb-4">
+      <div className="flex items-center gap-4 text-[10px] font-mono text-[#cbd1e0] mb-4">
         <span className="flex items-center gap-1.5">
           <span className="w-2.5 h-2.5 rounded-sm bg-[#00d4aa]" /> Profit month
         </span>
@@ -106,17 +106,17 @@ export default function VolumeChart({ realizedData, unrealizedData, currency }: 
             </linearGradient>
           </defs>
           <CartesianGrid strokeDasharray="3 3" stroke="#1e1e2e" vertical={false} />
-          <ReferenceLine y={0} stroke="#4a4a6a" strokeWidth={1} strokeDasharray="0" />
+          <ReferenceLine y={0} stroke="#cbd1e0" strokeWidth={1} strokeDasharray="0" />
           <XAxis
             dataKey="date"
-            tick={{ fill: "#4a4a6a", fontSize: 9, fontFamily: "JetBrains Mono" }}
+            tick={{ fill: "#cbd1e0", fontSize: 9, fontFamily: "JetBrains Mono" }}
             tickFormatter={(v, i) => (i % tickEvery === 0 ? v.slice(2) : "")}
             interval={0}
             axisLine={false}
             tickLine={false}
           />
           <YAxis
-            tick={{ fill: "#4a4a6a", fontSize: 9, fontFamily: "JetBrains Mono" }}
+            tick={{ fill: "#cbd1e0", fontSize: 9, fontFamily: "JetBrains Mono" }}
             tickFormatter={fmtAxis}
             axisLine={false}
             tickLine={false}

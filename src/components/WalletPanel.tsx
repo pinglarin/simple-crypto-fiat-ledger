@@ -37,13 +37,13 @@ function TxRow({ tx, currency }: { tx: EthTransaction; currency: "USD" | "THB" }
               {tx.value} {tx.tokenSymbol}
             </span>
             {tx.isContract && (
-              <span className="text-[9px] font-mono text-[#4a4a6a] bg-[#1e1e2e] px-1.5 py-0.5 rounded">CONTRACT</span>
+              <span className="text-[9px] font-mono text-[#cbd1e0] bg-[#1e1e2e] px-1.5 py-0.5 rounded">CONTRACT</span>
             )}
             {tx.status === "failed" && (
               <span className="text-[9px] font-mono text-red-400 bg-red-400/10 px-1.5 py-0.5 rounded">FAILED</span>
             )}
           </div>
-          <p className="text-[#4a4a6a] text-[10px] font-mono truncate">
+          <p className="text-[#cbd1e0] text-[10px] font-mono truncate">
             {isOut ? "to" : "from"} {shortAddr(counterparty)}
           </p>
         </div>
@@ -54,7 +54,7 @@ function TxRow({ tx, currency }: { tx: EthTransaction; currency: "USD" | "THB" }
             {isOut ? "-" : "+"}{displayValue}
           </p>
         )}
-        <p className="text-[#4a4a6a] font-mono text-[10px]">{dateStr} {timeStr}</p>
+        <p className="text-[#cbd1e0] font-mono text-[10px]">{dateStr} {timeStr}</p>
       </div>
     </div>
   );
@@ -82,11 +82,11 @@ export default function WalletPanel({ currency }: Props) {
       <div className="flex items-center justify-between mb-4">
         <div>
           <h2 className="font-display text-sm font-bold text-[#e8e8f0] tracking-wide uppercase">On-Chain Wallet</h2>
-          <p className="text-[#4a4a6a] font-mono text-[10px] mt-0.5 break-all">{WALLET_ADDRESS}</p>
+          <p className="text-[#cbd1e0] font-mono text-[10px] mt-0.5 break-all">{WALLET_ADDRESS}</p>
         </div>
         <div className="flex-shrink-0 ml-3">
           {loading ? (
-            <span className="flex items-center gap-2 text-xs font-mono text-[#4a4a6a]">
+            <span className="flex items-center gap-2 text-xs font-mono text-[#cbd1e0]">
               <span className="w-1.5 h-1.5 rounded-full bg-[#f7931a] animate-pulse" /> Fetching…
             </span>
           ) : wallet ? (
@@ -111,11 +111,11 @@ export default function WalletPanel({ currency }: Props) {
         <>
           <div className="bg-[#0a0a0f] border border-[#f7931a22] rounded-lg p-4 mb-4 flex items-center justify-between">
             <div>
-              <p className="text-[#4a4a6a] font-mono text-[10px] mb-0.5">ETH Balance</p>
+              <p className="text-[#cbd1e0] font-mono text-[10px] mb-0.5">ETH Balance</p>
               <p className="text-[#f7931a] font-display text-xl font-bold">{wallet.ethBalance} ETH</p>
             </div>
             <div className="text-right">
-              <p className="text-[#4a4a6a] font-mono text-[10px] mb-0.5">Value</p>
+              <p className="text-[#cbd1e0] font-mono text-[10px] mb-0.5">Value</p>
               <p className="text-[#e8e8f0] font-mono text-sm font-bold">{fmtCurrency(wallet.ethBalanceUSD, currency)}</p>
             </div>
           </div>
@@ -123,7 +123,7 @@ export default function WalletPanel({ currency }: Props) {
           <div className="flex gap-1 mb-4 bg-[#0a0a0f] p-1 rounded-lg">
             {(["txs", "tokens"] as const).map((t) => (
               <button key={t} onClick={() => setTab(t)}
-                className={`flex-1 py-1.5 text-xs font-mono rounded transition-all ${tab === t ? "bg-[#1e1e2e] text-[#e8e8f0]" : "text-[#4a4a6a] hover:text-[#8888aa]"}`}>
+                className={`flex-1 py-1.5 text-xs font-mono rounded transition-all ${tab === t ? "bg-[#1e1e2e] text-[#e8e8f0]" : "text-[#cbd1e0] hover:text-[#8888aa]"}`}>
                 {t === "txs" ? `Transactions (${wallet.transactions.length})` : `Tokens (${wallet.tokens.length})`}
               </button>
             ))}
@@ -132,7 +132,7 @@ export default function WalletPanel({ currency }: Props) {
           {tab === "txs" && (
             <div className="space-y-1.5 max-h-80 overflow-y-auto pr-1">
               {wallet.transactions.length === 0
-                ? <p className="text-[#4a4a6a] font-mono text-xs text-center py-6">No transactions found</p>
+                ? <p className="text-[#cbd1e0] font-mono text-xs text-center py-6">No transactions found</p>
                 : wallet.transactions.map((tx) => (
                   <TxRow key={tx.hash + tx.tokenSymbol} tx={tx} currency={currency} />
                 ))}
@@ -149,7 +149,7 @@ export default function WalletPanel({ currency }: Props) {
                     </div>
                     <div>
                       <p className="text-[#e8e8f0] font-mono text-xs font-bold">{token.symbol}</p>
-                      <p className="text-[#4a4a6a] text-[10px]">{token.name}</p>
+                      <p className="text-[#cbd1e0] text-[10px]">{token.name}</p>
                     </div>
                   </div>
                   <div className="text-right">

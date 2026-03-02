@@ -31,7 +31,7 @@ export default function TradesTable({ trades, currency }: Props) {
       <div className="flex items-center justify-between p-5 border-b border-[#1e1e2e]">
         <div>
           <h2 className="font-display text-sm font-bold text-[#e8e8f0] tracking-wide uppercase">Trade History</h2>
-          <p className="text-[#4a4a6a] font-mono text-xs mt-0.5">{filtered.length} filled orders</p>
+          <p className="text-[#cbd1e0] font-mono text-xs mt-0.5">{filtered.length} filled orders</p>
         </div>
         <div className="flex items-center gap-2">
           <input
@@ -39,12 +39,12 @@ export default function TradesTable({ trades, currency }: Props) {
             placeholder="Filter pair…"
             value={search}
             onChange={(e) => { setSearch(e.target.value); setPage(0); }}
-            className="bg-[#0a0a0f] border border-[#1e1e2e] rounded px-3 py-1.5 text-xs font-mono text-[#e8e8f0] placeholder-[#4a4a6a] focus:outline-none focus:border-[#f7931a44] w-28"
+            className="bg-[#0a0a0f] border border-[#1e1e2e] rounded px-3 py-1.5 text-xs font-mono text-[#e8e8f0] placeholder-[#cbd1e0] focus:outline-none focus:border-[#f7931a44] w-28"
           />
           {(["ALL", "BUY", "SELL"] as const).map((f) => (
             <button key={f} onClick={() => { setFilter(f); setPage(0); }}
               className={`text-xs font-mono px-3 py-1.5 rounded border transition-all ${
-                filter === f ? "border-[#f7931a] text-[#f7931a] bg-[#f7931a11]" : "border-[#1e1e2e] text-[#4a4a6a] hover:border-[#4a4a6a]"
+                filter === f ? "border-[#f7931a] text-[#f7931a] bg-[#f7931a11]" : "border-[#1e1e2e] text-[#cbd1e0] hover:border-[#cbd1e0]"
               }`}>
               {f}
             </button>
@@ -57,7 +57,7 @@ export default function TradesTable({ trades, currency }: Props) {
           <thead>
             <tr className="border-b border-[#1e1e2e]">
               {["Date", "From", "", "To", "Side", "Price", "Amount", `Total (${currency})`].map((h, i) => (
-                <th key={i} className="px-4 py-3 text-left font-mono text-[#4a4a6a] uppercase tracking-widest text-[10px] font-normal">
+                <th key={i} className="px-4 py-3 text-left font-mono text-[#cbd1e0] uppercase tracking-widest text-[10px] font-normal">
                   {h}
                 </th>
               ))}
@@ -72,13 +72,13 @@ export default function TradesTable({ trades, currency }: Props) {
               const receiveAsset = t.side === "BUY" ? from : to;
               return (
                 <tr key={i} className="border-b border-[#1e1e2e] hover:bg-[#f7931a06] transition-colors">
-                  <td className="px-4 py-3 font-mono text-[#4a4a6a] whitespace-nowrap">{t.date.slice(0, 16)}</td>
+                  <td className="px-4 py-3 font-mono text-[#cbd1e0] whitespace-nowrap">{t.date.slice(0, 16)}</td>
                   <td className="px-4 py-3">
                     <span className="font-mono text-xs font-bold text-red-400 bg-red-400/10 border border-red-400/20 px-2 py-0.5 rounded">
                       {spendAsset}
                     </span>
                   </td>
-                  <td className="px-1 py-3 text-[#4a4a6a] font-mono text-xs">→</td>
+                  <td className="px-1 py-3 text-[#cbd1e0] font-mono text-xs">→</td>
                   <td className="px-4 py-3">
                     <span className="font-mono text-xs font-bold text-[#00d4aa] bg-[#00d4aa]/10 border border-[#00d4aa]/20 px-2 py-0.5 rounded">
                       {receiveAsset}
@@ -106,7 +106,7 @@ export default function TradesTable({ trades, currency }: Props) {
       </div>
 
       <div className="flex items-center justify-between px-5 py-3 border-t border-[#1e1e2e]">
-        <p className="text-[#4a4a6a] font-mono text-xs">Page {page + 1} of {totalPages || 1}</p>
+        <p className="text-[#cbd1e0] font-mono text-xs">Page {page + 1} of {totalPages || 1}</p>
         <div className="flex gap-2">
           <button className="btn-ghost" onClick={() => setPage((p) => Math.max(0, p - 1))} disabled={page === 0}>← Prev</button>
           <button className="btn-ghost" onClick={() => setPage((p) => Math.min(totalPages - 1, p + 1))} disabled={page >= totalPages - 1}>Next →</button>

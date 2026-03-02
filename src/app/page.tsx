@@ -32,17 +32,17 @@ export default function Dashboard() {
               crypto-fiat-ledger
             </span>
             <span className="text-[#1e1e2e] text-sm">·</span>
-            <span className="text-[#4a4a6a] font-mono text-xs">personal</span>
+            <span className="text-[#cbd1e0] font-mono text-xs">personal</span>
           </div>
           <div className="flex items-center gap-3">
-            <span className="text-[#4a4a6a] font-mono text-xs hidden sm:block">
+            <span className="text-[#cbd1e0] font-mono text-xs hidden sm:block">
               {stats.dateRange.from} → {stats.dateRange.to}
             </span>
             <div className="flex items-center bg-[#111118] border border-[#1e1e2e] rounded-lg p-0.5">
               {(["USD", "THB"] as const).map((c) => (
                 <button key={c} onClick={() => setCurrency(c)}
                   className={`px-3 py-1 text-xs font-mono rounded transition-all ${
-                    currency === c ? "bg-[#f7931a] text-black font-bold" : "text-[#4a4a6a] hover:text-[#e8e8f0]"
+                    currency === c ? "bg-[#f7931a] text-black font-bold" : "text-[#cbd1e0] hover:text-[#e8e8f0]"
                   }`}>
                   {c === "USD" ? "$ USD" : "฿ THB"}
                 </button>
