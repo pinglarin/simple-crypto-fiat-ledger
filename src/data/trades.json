@@ -34,12 +34,12 @@
   },
   {
     "date": "2023-01-12 11:20:05",
-    "pair": "SOLUSDT",
+    "pair": "XRPUSDT",
     "side": "BUY",
     "type": "Limit",
     "avgPrice": 13.47,
     "executed": 7.42,
-    "executedUnit": "SOL",
+    "executedUnit": "XRP",
     "total": 99.9474,
     "totalUnit": "USDT"
   },
@@ -78,12 +78,12 @@
   },
   {
     "date": "2023-01-22 07:14:39",
-    "pair": "SOLUSDT",
+    "pair": "XRPUSDT",
     "side": "SELL",
     "type": "Limit",
     "avgPrice": 22.61,
     "executed": 7.42,
-    "executedUnit": "SOL",
+    "executedUnit": "XRP",
     "total": 167.7662,
     "totalUnit": "USDT"
   },
@@ -166,12 +166,12 @@
   },
   {
     "date": "2023-02-16 06:59:27",
-    "pair": "SOLUSDT",
+    "pair": "XRPUSDT",
     "side": "BUY",
     "type": "Limit",
     "avgPrice": 21.88,
     "executed": 13.71,
-    "executedUnit": "SOL",
+    "executedUnit": "XRP",
     "total": 299.9748,
     "totalUnit": "USDT"
   },
@@ -232,12 +232,12 @@
   },
   {
     "date": "2023-03-08 16:32:09",
-    "pair": "SOLUSDT",
+    "pair": "XRPUSDT",
     "side": "SELL",
     "type": "Limit",
     "avgPrice": 19.43,
     "executed": 13.71,
-    "executedUnit": "SOL",
+    "executedUnit": "XRP",
     "total": 266.3853,
     "totalUnit": "USDT"
   },
@@ -320,12 +320,12 @@
   },
   {
     "date": "2023-04-10 09:22:47",
-    "pair": "SOLUSDT",
+    "pair": "XRPUSDT",
     "side": "BUY",
     "type": "Limit",
     "avgPrice": 20.14,
     "executed": 24.83,
-    "executedUnit": "SOL",
+    "executedUnit": "XRP",
     "total": 500.0762,
     "totalUnit": "USDT"
   },
@@ -364,12 +364,12 @@
   },
   {
     "date": "2023-04-26 17:15:09",
-    "pair": "SOLUSDT",
+    "pair": "XRPUSDT",
     "side": "SELL",
     "type": "Limit",
     "avgPrice": 23.78,
     "executed": 24.83,
-    "executedUnit": "SOL",
+    "executedUnit": "XRP",
     "total": 590.4674,
     "totalUnit": "USDT"
   },
@@ -441,12 +441,12 @@
   },
   {
     "date": "2023-05-29 16:44:19",
-    "pair": "SOLUSDT",
+    "pair": "XRPUSDT",
     "side": "BUY",
     "type": "Limit",
     "avgPrice": 18.92,
     "executed": 26.48,
-    "executedUnit": "SOL",
+    "executedUnit": "XRP",
     "total": 500.8016,
     "totalUnit": "USDT"
   },
@@ -474,12 +474,12 @@
   },
   {
     "date": "2023-06-13 15:21:05",
-    "pair": "SOLUSDT",
+    "pair": "XRPUSDT",
     "side": "SELL",
     "type": "Limit",
     "avgPrice": 16.77,
     "executed": 26.48,
-    "executedUnit": "SOL",
+    "executedUnit": "XRP",
     "total": 444.0696,
     "totalUnit": "USDT"
   },
@@ -551,12 +551,12 @@
   },
   {
     "date": "2023-07-19 10:51:23",
-    "pair": "SOLUSDT",
+    "pair": "XRPUSDT",
     "side": "BUY",
     "type": "Limit",
     "avgPrice": 23.11,
     "executed": 43.27,
-    "executedUnit": "SOL",
+    "executedUnit": "XRP",
     "total": 999.7697,
     "totalUnit": "USDT"
   },
@@ -584,12 +584,12 @@
   },
   {
     "date": "2023-08-03 19:44:51",
-    "pair": "SOLUSDT",
+    "pair": "XRPUSDT",
     "side": "SELL",
     "type": "Limit",
     "avgPrice": 24.66,
     "executed": 43.27,
-    "executedUnit": "SOL",
+    "executedUnit": "XRP",
     "total": 1067.0382,
     "totalUnit": "USDT"
   },
@@ -683,12 +683,12 @@
   },
   {
     "date": "2023-09-17 08:58:47",
-    "pair": "SOLUSDT",
+    "pair": "XRPUSDT",
     "side": "BUY",
     "type": "Limit",
     "avgPrice": 19.04,
     "executed": 52.52,
-    "executedUnit": "SOL",
+    "executedUnit": "XRP",
     "total": 999.9808,
     "totalUnit": "USDT"
   },
@@ -716,12 +716,12 @@
   },
   {
     "date": "2023-10-03 07:05:52",
-    "pair": "SOLUSDT",
+    "pair": "XRPUSDT",
     "side": "SELL",
     "type": "Limit",
     "avgPrice": 22.18,
     "executed": 52.52,
-    "executedUnit": "SOL",
+    "executedUnit": "XRP",
     "total": 1164.8936,
     "totalUnit": "USDT"
   },
@@ -749,12 +749,12 @@
   },
   {
     "date": "2023-10-18 09:18:07",
-    "pair": "SOLUSDT",
+    "pair": "XRPUSDT",
     "side": "BUY",
     "type": "Limit",
     "avgPrice": 26.73,
     "executed": 74.83,
-    "executedUnit": "SOL",
+    "executedUnit": "XRP",
     "total": 1999.8159,
     "totalUnit": "USDT"
   },
@@ -782,12 +782,12 @@
   },
   {
     "date": "2023-11-02 14:31:24",
-    "pair": "SOLUSDT",
+    "pair": "XRPUSDT",
     "side": "SELL",
     "type": "Limit",
     "avgPrice": 34.11,
     "executed": 74.83,
-    "executedUnit": "SOL",
+    "executedUnit": "XRP",
     "total": 2552.4813,
     "totalUnit": "USDT"
   },
@@ -815,12 +815,12 @@
   },
   {
     "date": "2023-11-17 11:42:37",
-    "pair": "SOLUSDT",
+    "pair": "XRPUSDT",
     "side": "BUY",
     "type": "Limit",
     "avgPrice": 56.34,
     "executed": 88.74,
-    "executedUnit": "SOL",
+    "executedUnit": "XRP",
     "total": 4999.6116,
     "totalUnit": "USDT"
   },
@@ -837,12 +837,12 @@
   },
   {
     "date": "2023-11-27 19:33:28",
-    "pair": "SOLUSDT",
+    "pair": "XRPUSDT",
     "side": "SELL",
     "type": "Limit",
     "avgPrice": 60.17,
     "executed": 88.74,
-    "executedUnit": "SOL",
+    "executedUnit": "XRP",
     "total": 5338.6758,
     "totalUnit": "USDT"
   },
@@ -870,12 +870,12 @@
   },
   {
     "date": "2023-12-12 08:46:44",
-    "pair": "SOLUSDT",
+    "pair": "XRPUSDT",
     "side": "BUY",
     "type": "Limit",
     "avgPrice": 71.88,
     "executed": 138.98,
-    "executedUnit": "SOL",
+    "executedUnit": "XRP",
     "total": 9990.0024,
     "totalUnit": "USDT"
   },
@@ -903,12 +903,12 @@
   },
   {
     "date": "2023-12-27 07:59:57",
-    "pair": "SOLUSDT",
+    "pair": "XRPUSDT",
     "side": "SELL",
     "type": "Limit",
     "avgPrice": 104.32,
     "executed": 69.49,
-    "executedUnit": "SOL",
+    "executedUnit": "XRP",
     "total": 7249.1168,
     "totalUnit": "USDT"
   },
@@ -936,12 +936,12 @@
   },
   {
     "date": "2024-01-13 19:13:11",
-    "pair": "SOLUSDT",
+    "pair": "XRPUSDT",
     "side": "SELL",
     "type": "Limit",
     "avgPrice": 98.76,
     "executed": 69.49,
-    "executedUnit": "SOL",
+    "executedUnit": "XRP",
     "total": 6865.3524,
     "totalUnit": "USDT"
   },
@@ -969,12 +969,12 @@
   },
   {
     "date": "2024-02-18 09:27:21",
-    "pair": "SOLUSDT",
+    "pair": "XRPUSDT",
     "side": "BUY",
     "type": "Limit",
     "avgPrice": 103.47,
     "executed": 96.65,
-    "executedUnit": "SOL",
+    "executedUnit": "XRP",
     "total": 9999.9555,
     "totalUnit": "USDT"
   },
@@ -1002,12 +1002,12 @@
   },
   {
     "date": "2024-03-20 08:40:31",
-    "pair": "SOLUSDT",
+    "pair": "XRPUSDT",
     "side": "SELL",
     "type": "Limit",
     "avgPrice": 194.22,
     "executed": 48.32,
-    "executedUnit": "SOL",
+    "executedUnit": "XRP",
     "total": 9384.9104,
     "totalUnit": "USDT"
   },
@@ -1035,12 +1035,12 @@
   },
   {
     "date": "2024-05-08 16:53:41",
-    "pair": "SOLUSDT",
+    "pair": "XRPUSDT",
     "side": "BUY",
     "type": "Limit",
     "avgPrice": 149.38,
     "executed": 33.47,
-    "executedUnit": "SOL",
+    "executedUnit": "XRP",
     "total": 4999.6286,
     "totalUnit": "USDT"
   },
@@ -1068,12 +1068,12 @@
   },
   {
     "date": "2024-06-21 11:06:51",
-    "pair": "SOLUSDT",
+    "pair": "XRPUSDT",
     "side": "SELL",
     "type": "Limit",
     "avgPrice": 140.17,
     "executed": 33.47,
-    "executedUnit": "SOL",
+    "executedUnit": "XRP",
     "total": 4690.2899,
     "totalUnit": "USDT"
   },
@@ -1101,12 +1101,12 @@
   },
   {
     "date": "2024-08-09 10:19:58",
-    "pair": "SOLUSDT",
+    "pair": "XRPUSDT",
     "side": "BUY",
     "type": "Limit",
     "avgPrice": 144.62,
     "executed": 69.15,
-    "executedUnit": "SOL",
+    "executedUnit": "XRP",
     "total": 9999.633,
     "totalUnit": "USDT"
   },
@@ -1134,12 +1134,12 @@
   },
   {
     "date": "2024-09-22 14:33:12",
-    "pair": "SOLUSDT",
+    "pair": "XRPUSDT",
     "side": "SELL",
     "type": "Limit",
     "avgPrice": 160.88,
     "executed": 34.57,
-    "executedUnit": "SOL",
+    "executedUnit": "XRP",
     "total": 5561.6416,
     "totalUnit": "USDT"
   },
@@ -1178,12 +1178,12 @@
   },
   {
     "date": "2024-11-13 08:10:47",
-    "pair": "SOLUSDT",
+    "pair": "XRPUSDT",
     "side": "BUY",
     "type": "Limit",
     "avgPrice": 222.14,
     "executed": 45.01,
-    "executedUnit": "SOL",
+    "executedUnit": "XRP",
     "total": 9999.6214,
     "totalUnit": "USDT"
   },
@@ -1211,12 +1211,12 @@
   },
   {
     "date": "2024-12-12 16:23:57",
-    "pair": "SOLUSDT",
+    "pair": "XRPUSDT",
     "side": "SELL",
     "type": "Limit",
     "avgPrice": 218.67,
     "executed": 45.01,
-    "executedUnit": "SOL",
+    "executedUnit": "XRP",
     "total": 9841.8867,
     "totalUnit": "USDT"
   },
