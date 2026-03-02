@@ -1,0 +1,12 @@
+.next/
+node_modules/
+.env
+.env.local
+.env*.local
+*.tsbuildinfo
+out/
+dist/
+.DS_Store
+Thumbs.db
+
+src/data/trades.json
