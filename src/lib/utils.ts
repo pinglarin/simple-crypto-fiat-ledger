@@ -37,7 +37,7 @@ export function computeStats(trades: Trade[]) {
   const totalBuyVolume = buys.reduce((s, t) => s + toUSD(t.total, t.totalUnit, t.date.slice(0, 7)), 0);
   const totalSellVolume = sells.reduce((s, t) => s + toUSD(t.total, t.totalUnit, t.date.slice(0, 7)), 0);
   const totalVolume = filled.reduce((s, t) => s + toUSD(t.total, t.totalUnit, t.date.slice(0, 7)), 0);
-  const pairs = [...new Set(filled.map((t) => t.pair))];
+  const pairs = Array.from(new Set(filled.map((t) => t.pair)));
 
   // FIFO realized P&L per month + track remaining cost basis
   const costBasis: Record<string, Array<[number, number]>> = {};
@@ -104,6 +104,60 @@ export function computeStats(trades: Trade[]) {
     return { date, volume: Math.round(pnl), cumulative: Math.round(cumulative) };
   });
 
+  // Compute unrealized P&L series by replaying trades month-by-month
+  const sorted = [...filled].sort((a, b) => a.date.localeCompare(b.date));
+  const unrealizedChartData: ChartDataPoint[] = [];
+  const lotsByAsset: Record<string, Array<[number, number]>> = {};
+  const lastPrice: Record<string, number> = {};
+  let ti = 0; // trade index
+  let prevUnrealized = 0;
+
+  for (const month of allMonths) {
+    // process trades up to and including this month
+    while (ti < sorted.length && sorted[ti].date.slice(0, 7) <= month) {
+      const t = sorted[ti];
+      const m = t.date.slice(0, 7);
+      const base = t.executedUnit;
+      const qty = t.executed;
+      const totalUSD = toUSD(t.total, t.totalUnit, m);
+      const pricePerUnit = qty > 0 ? totalUSD / qty : 0;
+
+      // update last known price (USD) for the asset
+      lastPrice[base] = pricePerUnit;
+
+      if (t.side === "BUY") {
+        if (!lotsByAsset[base]) lotsByAsset[base] = [];
+        lotsByAsset[base].push([qty, pricePerUnit]);
+      } else {
+        if (!lotsByAsset[base]) lotsByAsset[base] = [];
+        let remaining = qty;
+        while (remaining > 0 && lotsByAsset[base].length > 0) {
+          const [lotQty, lotPrice] = lotsByAsset[base][0];
+          const take = Math.min(remaining, lotQty);
+          remaining -= take;
+          if (take >= lotQty) lotsByAsset[base].shift();
+          else lotsByAsset[base][0] = [lotQty - take, lotPrice];
+        }
+      }
+      ti += 1;
+    }
+
+    // compute unrealized across open lots
+    let unrealizedTotal = 0;
+    for (const [asset, lots] of Object.entries(lotsByAsset)) {
+      const totalQty = lots.reduce((s, [q]) => s + q, 0);
+      const totalCost = lots.reduce((s, [q, p]) => s + q * p, 0);
+      if (totalQty <= 0) continue;
+      const mktPrice = lastPrice[asset] ?? (totalCost / Math.max(1, totalQty));
+      const marketValue = totalQty * mktPrice;
+      unrealizedTotal += marketValue - totalCost;
+    }
+
+    const monthlyUnrealizedChange = unrealizedTotal - prevUnrealized;
+    prevUnrealized = unrealizedTotal;
+    unrealizedChartData.push({ date: month, volume: Math.round(monthlyUnrealizedChange), cumulative: Math.round(unrealizedTotal) });
+  }
+
   const assetVolume: Record<string, number> = {};
   for (const t of filled) {
     const base = t.pair.replace(/(USDT|USDC|BUSD|BNB|BTC)$/, "");
@@ -124,6 +178,7 @@ export function computeStats(trades: Trade[]) {
     pairs,
     chartData,
     assetVolume,
+    unrealizedChartData,
     dateRange: {
       from: filled[0]?.date?.slice(0, 10) ?? "—",
       to: filled[filled.length - 1]?.date?.slice(0, 10) ?? "—",

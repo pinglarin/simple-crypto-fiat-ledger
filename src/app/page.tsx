@@ -13,7 +13,7 @@ import TradesTable from "@/components/TradesTable";
 import AssetBreakdown from "@/components/AssetBreakdown";
 import ShortcutPanel from "@/components/ShortcutPanel";
 
-const WALLET = "0x564dCa5C975eD19B29785c7Aa8841ae23143dfd5";
+const WALLET = process.env.NEXT_PUBLIC_WALLET_ADDRESS || "";
 
 export default function Dashboard() {
   const [trades] = useState<Trade[]>(rawTrades as Trade[]);
@@ -69,7 +69,8 @@ export default function Dashboard() {
         {/* P&L chart + Asset breakdown */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
           <div className="lg:col-span-2">
-            <VolumeChart data={stats.chartData} currency={currency} />
+            {/* Provide both realized and unrealized datasets to the chart. */}
+            <VolumeChart realizedData={stats.chartData} unrealizedData={stats.unrealizedChartData} currency={currency} />
           </div>
           <div>
             <AssetBreakdown assetVolume={stats.assetVolume} />

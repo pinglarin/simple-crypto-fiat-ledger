@@ -10,7 +10,8 @@ import { ChartDataPoint } from "@/lib/types";
 import { USD_TO_THB } from "@/lib/utils";
 
 interface Props {
-  data: ChartDataPoint[];
+  realizedData: ChartDataPoint[];
+  unrealizedData: ChartDataPoint[];
   currency: "USD" | "THB";
 }
 
@@ -36,10 +37,12 @@ const CustomTooltip = ({ active, payload, label, currency }: any) => {
   );
 };
 
-export default function VolumeChart({ data, currency }: Props) {
+export default function VolumeChart({ realizedData, unrealizedData, currency }: Props) {
+  const [mode, setMode] = React.useState<'realized' | 'unrealized'>('realized');
   const mul = currency === "THB" ? USD_TO_THB : 1;
   const sym = currency === "THB" ? "฿" : "$";
 
+  const data = mode === 'realized' ? realizedData : unrealizedData;
   const scaled = data.map((d) => ({
     ...d,
     volume: Math.round(d.volume * mul),
@@ -59,7 +62,7 @@ export default function VolumeChart({ data, currency }: Props) {
       <div className="flex items-center justify-between mb-5">
         <div>
           <h2 className="font-display text-sm font-bold text-[#e8e8f0] tracking-wide uppercase">
-            Realized P&L
+            {mode === 'realized' ? 'Realized P&L' : 'Unrealized P&L'}
           </h2>
           <p className="text-[#4a4a6a] font-mono text-xs mt-0.5">
             FIFO cost basis · {data[0]?.date ?? "—"} → today
@@ -72,6 +75,13 @@ export default function VolumeChart({ data, currency }: Props) {
               {totalPnL >= 0 ? "+" : ""}{sym}{Math.abs(totalPnL).toLocaleString()}
             </p>
           </div>
+          <button
+            className="ml-4 px-2 py-1 rounded bg-[#1e1e2e] text-xs font-mono text-[#e8e8f0] border border-[#33334a] hover:bg-[#23233a] transition"
+            onClick={() => setMode(mode === 'realized' ? 'unrealized' : 'realized')}
+            aria-label="Toggle P&L mode"
+          >
+            {mode === 'realized' ? 'Show Unrealized' : 'Show Realized'}
+          </button>
         </div>
       </div>
 
