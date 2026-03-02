@@ -9,22 +9,22 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "date-fns": "^3.6.0",
+    "ethers": "^6.16.0",
     "next": "14.2.0",
+    "papaparse": "^5.4.1",
     "react": "^18",
     "react-dom": "^18",
-    "ethers": "^6.11.0",
-    "papaparse": "^5.4.1",
-    "recharts": "^2.12.0",
-    "date-fns": "^3.6.0"
+    "recharts": "^2.12.0"
   },
   "devDependencies": {
     "@types/node": "^20",
+    "@types/papaparse": "^5.3.14",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "@types/papaparse": "^5.3.14",
-    "typescript": "^5",
-    "tailwindcss": "^3.4.0",
     "autoprefixer": "^10.4.19",
-    "postcss": "^8.4.38"
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.0",
+    "typescript": "^5"
   }
 }

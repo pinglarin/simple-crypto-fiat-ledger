@@ -1,4 +1,6 @@
+
 import { PriceData, WalletData, EthTransaction } from "./types";
+import { formatUnits } from "ethers";
 
 const COINGECKO_BASE = "https://api.coingecko.com/api/v3";
 const ETHERSCAN_BASE = "https://api.etherscan.io/api";
@@ -12,7 +14,7 @@ const SYMBOL_TO_ID: Record<string, string> = {
 };
 
 export async function fetchPrices(symbols: string[]): Promise<PriceData> {
-  const ids = [...new Set(symbols.map((s) => SYMBOL_TO_ID[s]).filter(Boolean))];
+  const ids = Array.from(new Set(symbols.map((s) => SYMBOL_TO_ID[s]).filter(Boolean)));
   if (!ids.length) return {};
   try {
     const res = await fetch(
@@ -38,8 +40,11 @@ export async function fetchWalletData(address: string): Promise<WalletData | nul
       `${ETHERSCAN_BASE}?${params}&apikey=${ETHERSCAN_KEY}`;
 
     // Parallel: ETH balance + normal txs + ERC-20 txs + ETH price
+
+    // Use Etherscan API v2 for ETH balance
+    const ethBalanceUrl = `https://api.etherscan.io/v2/api?chainid=1&module=account&action=balance&address=${address}&tag=latest&apikey=${ETHERSCAN_KEY}`;
     const [ethBalRes, normalTxRes, erc20TxRes, priceRes] = await Promise.all([
-      fetch(api(`module=account&action=balance&address=${address}&tag=latest`)),
+      fetch(ethBalanceUrl),
       fetch(api(`module=account&action=txlist&address=${address}&sort=desc&offset=50&page=1`)),
       fetch(api(`module=account&action=tokentx&address=${address}&sort=desc&offset=50&page=1`)),
       fetch(`${COINGECKO_BASE}/simple/price?ids=ethereum&vs_currencies=usd&include_24hr_change=true`),
@@ -54,10 +59,12 @@ export async function fetchWalletData(address: string): Promise<WalletData | nul
 
     const ethPrice = priceData.ethereum?.usd ?? 0;
     const ethChange = priceData.ethereum?.usd_24h_change ?? 0;
-    const ethBalanceWei = ethBalData.status === "1" ? BigInt(ethBalData.result) : 0n;
-    const ethBalance = (Number(ethBalanceWei) / 1e18).toFixed(6);
+    // Etherscan v2 returns { status, message, result: "<balance>" }
+    const ethBalanceWei = ethBalData.status === "1" && ethBalData.result ? ethBalData.result : "0";
+    // Use ethers.js for precise conversion
+    const ethBalance = formatUnits(ethBalanceWei, 18);
+    const ethBalanceFixed = parseFloat(ethBalance).toFixed(6);
     const ethBalanceUSD = parseFloat(ethBalance) * ethPrice;
-
     // Normalize normal ETH transactions
     const normalTxs: EthTransaction[] = [];
     if (normalTxData.status === "1" && Array.isArray(normalTxData.result)) {
@@ -110,7 +117,7 @@ export async function fetchWalletData(address: string): Promise<WalletData | nul
     const seen = new Set<string>(["ETH"]);
     const tokens: WalletData["tokens"] = [{
       symbol: "ETH", name: "Ethereum",
-      balance: ethBalance, balanceUSD: ethBalanceUSD,
+      balance: ethBalanceFixed, balanceUSD: ethBalanceUSD,
       price: ethPrice, change24h: ethChange,
     }];
     for (const tx of erc20TxData.status === "1" ? erc20TxData.result : []) {
