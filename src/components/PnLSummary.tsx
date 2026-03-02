@@ -67,7 +67,7 @@ export default function PnLSummary({ realizedPnL, openPositions, totalCostBasis,
 
   async function fetchPrices() {
     const assets = openPositions.map((p) => p.asset).filter((a) => ASSET_TO_ID[a]);
-    const ids = [...new Set(assets.map((a) => ASSET_TO_ID[a]))].join(",");
+    const ids = Array.from(new Set(assets.map((a) => ASSET_TO_ID[a]))).join(",");
     if (!ids) { setLoading(false); return; }
     try {
       const res = await fetch(
